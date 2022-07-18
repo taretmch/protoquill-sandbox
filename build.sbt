@@ -1,4 +1,4 @@
-val scala3Version = "3.1.3"
+val scala3Version = "3.1.1"
 
 lazy val root = project
   .in(file("."))
@@ -7,7 +7,8 @@ lazy val root = project
     version      := "0.1.0-SNAPSHOT",
     scalaVersion := scala3Version,
     libraryDependencies ++= Seq(
-      "io.getquill"   %% "quill-jdbc" % "4.1.0",
-      "org.scalameta" %% "munit"      % "0.7.29" % Test
+      "io.getquill"   %% "quill-jdbc"           % "4.0.0",
+      "com.zaxxer"     % "HikariCP"             % "4.0.3",
+      "mysql"          % "mysql-connector-java" % "8.0.26",
     )
   )
