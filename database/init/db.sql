@@ -15,3 +15,8 @@ CREATE TABLE `person` (
 INSERT INTO `person` VALUES (1,'太郎','山田',25,1);
 INSERT INTO `person` VALUES (2,'花子','山田',28,2);
 INSERT INTO `person` VALUES (3,'太郎','佐藤',28,1);
+
+CREATE TABLE `test_table` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
