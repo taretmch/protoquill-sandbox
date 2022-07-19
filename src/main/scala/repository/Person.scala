@@ -5,38 +5,52 @@ import protoquill.sandbox.entity.Person
 
 class PersonRepository extends Repository:
 
-  inline def schema = quote(querySchema[Person]("person"))
+  inline def schema = quote(query[Person])
 
   def findAll: Seq[Person] =
     val ctx = connect
     import ctx._
 
-    run(schema)
+    val res = run(schema)
+    ctx.close
+    res
 
   def get(id: Person.Id): Option[Person] =
     val ctx = connect
     import ctx._
 
-    run(quote {
-      schema.filter(_.id == lift(id))
-    }).headOption
+    val res = run(schema.filter(_.id == lift(id))).headOption
+    ctx.close
+    res
 
   def add(data: Person): Person.Id =
     val ctx = connect
     import ctx._
 
-    run(schema.insertValue(lift(data)).returningGenerated(_.id))
+    val res = run(schema.insertValue(lift(data)).returningGenerated(_.id))
+    ctx.close
+    res
 
   def update(data: Person): Option[Person] =
     val ctx = connect
     import ctx._
 
-    run(schema.filter(_.id == lift(data.id)).updateValue(lift(data)).returning(v => Some(v)))
+    for
+      old <- run(schema.filter(_.id == lift(data.id))).headOption
+      _    = run(schema.filter(_.id == lift(data.id)).updateValue(lift(data)))
+    yield
+      ctx.close
+      old
 
   def delete(id: Person.Id): Option[Person] =
     val ctx = connect
     import ctx._
 
-    run(schema.filter(_.id == lift(id)).delete.returning(v => Some(v)))
+    for
+      old <- run(schema.filter(_.id == lift(id))).headOption
+      _    = run(schema.filter(_.id == lift(id)).delete)
+    yield
+      ctx.close
+      old
 
 end PersonRepository
