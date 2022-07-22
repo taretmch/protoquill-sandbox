@@ -5,7 +5,12 @@ import protoquill.sandbox.entity.Person
 
 class PersonRepository extends Repository:
 
-  inline def schema = quote(query[Person])
+  inline def schema = quote {
+    querySchema[Person]("person",
+      _.name.firstName -> "first_name",
+      _.name.lastName  -> "last_name"
+    )
+  }
 
   def findAll: Seq[Person] =
     val ctx = connect

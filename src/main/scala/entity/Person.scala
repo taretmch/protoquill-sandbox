@@ -3,8 +3,7 @@ package protoquill.sandbox.entity
 import Person._
 case class Person(
   id:        Id,
-  firstName: FirstName,
-  lastName:  LastName,
+  name:      Name,
   age:       Age,
   gender:    Gender
 )
@@ -15,6 +14,7 @@ object Person:
   opaque type Age       = Int
   opaque type FirstName = String
   opaque type LastName  = String
+  case class Name(firstName: FirstName, lastName: LastName)
   enum Gender(val code: Short):
     case MALE   extends Gender(code = 1)
     case FEMALE extends Gender(code = 2)
@@ -47,7 +47,10 @@ object Person:
       def increment: Age = age + 1
       def toInt: Int = age
 
+  def apply(name: Name, age: Age, gender: Gender): Person =
+    Person(Id.init, name, age, gender)
+
   def apply(fn: FirstName, ln: LastName, age: Age, gender: Gender): Person =
-    Person(Id.init, fn, ln, age, gender)
+    Person(Id.init, Name(fn, ln), age, gender)
 
 end Person
