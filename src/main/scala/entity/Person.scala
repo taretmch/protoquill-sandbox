@@ -2,10 +2,10 @@ package protoquill.sandbox.entity
 
 import Person._
 case class Person(
-  id:        Id,
-  name:      Name,
-  age:       Age,
-  gender:    Gender
+  id:     Id,
+  name:   Name,
+  age:    Age,
+  gender: Gender
 )
 
 object Person:

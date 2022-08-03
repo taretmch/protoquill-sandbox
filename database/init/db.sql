@@ -20,3 +20,6 @@ CREATE TABLE `test_table` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `test_table` VALUES (1,'Name');
+INSERT INTO `test_table` VALUES (2,'名前');

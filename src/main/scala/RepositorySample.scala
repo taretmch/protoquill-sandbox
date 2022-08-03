@@ -1,7 +1,7 @@
 import protoquill.sandbox.entity.Person
 import protoquill.sandbox.repository.PersonRepository
 
-object Sample:
+object RepositorySample:
 
   val p1 = Person(Person.FirstName("tomoki"), Person.LastName("mizogami"), Person.Age(24), Person.Gender.MALE)
 
