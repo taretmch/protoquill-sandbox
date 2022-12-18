@@ -1,4 +1,4 @@
-package protoquill.sandbox.repository
+package repository
 
 import io.getquill.*
 

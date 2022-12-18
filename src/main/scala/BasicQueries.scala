@@ -1,5 +1,3 @@
-package protoquill.sandbox
-
 import io.getquill.*
 
 object BasicQueries:

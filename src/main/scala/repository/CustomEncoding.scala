@@ -1,7 +1,7 @@
-package protoquill.sandbox.repository
+package repository
 
 import io.getquill.*
-import protoquill.sandbox.entity.Person
+import entity.Person
 
 trait CustomEncoding:
 

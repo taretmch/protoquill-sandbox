@@ -1,5 +1,5 @@
-import protoquill.sandbox.entity.Person
-import protoquill.sandbox.repository.{ Database, PersonRepository }
+import entity.Person
+import repository.{ Database, PersonRepository }
 
 object RepositorySample:
 

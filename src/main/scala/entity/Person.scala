@@ -1,4 +1,4 @@
-package protoquill.sandbox.entity
+package entity
 
 import Person.*
 case class Person(
