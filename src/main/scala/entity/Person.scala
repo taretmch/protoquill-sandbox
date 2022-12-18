@@ -1,6 +1,6 @@
 package protoquill.sandbox.entity
 
-import Person._
+import Person.*
 case class Person(
   id:     Id,
   name:   Name,

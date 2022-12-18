@@ -1,8 +1,10 @@
 package protoquill.sandbox
 
-import io.getquill._
+import io.getquill.*
 
 object BasicQueries:
+
+  case class Person(firstName: String, lastName: String, age: Int)
 
   val ctx = new SqlMirrorContext(MySQLDialect, Literal)
   import ctx._
@@ -12,7 +14,7 @@ object BasicQueries:
   }
 
   def insert1 = quote {
-    query[Person].insertValue(lift(Person("tomoki", "mizogami", 24)))
+    query[Person].insertValue(lift(Person("tomoki", "mizogami", 25)))
   }
 
   def insert2 = quote {
@@ -20,11 +22,11 @@ object BasicQueries:
   }
 
   def insert3 = quote {
-    query[Person].insertValue(lift(Person("tomoki", "mizogami", 24))).returning(_.firstName)
+    query[Person].insertValue(lift(Person("tomoki", "mizogami", 25))).returning(_.firstName)
   }
 
   def update1 = 
-    val updated = Person("友貴", "溝上", 24)
+    val updated = Person("友貴", "溝上", 25)
     quote {
       query[Person].filter(p => p.firstName == "tomoki" && p.lastName == "mizogami").updateValue(lift(updated))
     }

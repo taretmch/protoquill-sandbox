@@ -1,4 +1,4 @@
-import io.getquill._
+import io.getquill.*
 
 object DbSample:
 

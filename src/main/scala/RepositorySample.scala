@@ -1,18 +1,18 @@
 import protoquill.sandbox.entity.Person
-import protoquill.sandbox.repository.PersonRepository
+import protoquill.sandbox.repository.{ Database, PersonRepository }
 
 object RepositorySample:
 
-  val p1 = Person(Person.FirstName("tomoki"), Person.LastName("mizogami"), Person.Age(24), Person.Gender.MALE)
-
-  val repository = new PersonRepository
+  val db         = new Database
+  val repository = new PersonRepository(using db)
 
   @main def getPerson: Unit =
     val persons = repository.findAll
     persons.foreach(println _)
 
   @main def insertPerson: Unit =
-    val insertedId = repository.add(p1)
+    val data = Person(Person.FirstName("tomoki"), Person.LastName("mizogami"), Person.Age(25), Person.Gender.MALE)
+    val insertedId = repository.add(data)
     println("id of inserted value is " + insertedId)
 
   @main def updatePerson: Unit =
