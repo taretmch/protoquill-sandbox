@@ -1,8 +1,26 @@
-## sbt project compiled with Scala 3
+# protoquill sandbox project
 
-### Usage
+## Prerequirements
 
-This is a normal sbt project. You can compile code with `sbt compile`, run it with `sbt run`, and `sbt console` will start a Scala 3 REPL.
+- Docker
+- sbt
 
-For more information on the sbt-dotty plugin, see the
-[scala3-example-project](https://github.com/scala/scala3-example-project/blob/main/README.md).
+## Setup
+
+Run docker compose to set up mysql server. Then, mysql server starts at 13306.
+
+```sh
+docker compose up -d
+# or
+docker-compose up -d
+```
+
+```sh
+mysql -u admin -p -h 127.0.0.1 -P 13306
+# password: admin
+
+# or
+docker compose exec mysql bash
+mysql -u admin -p
+# password: admin
+```
